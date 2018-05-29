@@ -919,7 +919,7 @@ public:
      * @return The object associated to the entity.
      */
     template<typename... Args>
-    std::enable_if_t<std::is_constructible<Type, Args...>::value, object_type &>
+    std::enable_if_t<std::is_constructible_v<Type, Args...>, object_type &>
     construct(const entity_type entity, Args &&... args) {
         underlying_type::construct(entity);
         instances.emplace_back(std::forward<Args>(args)...);
@@ -947,7 +947,7 @@ public:
      * @return The object associated to the entity.
      */
     template<typename... Args>
-    std::enable_if_t<!std::is_constructible<Type, Args...>::value, object_type &>
+    std::enable_if_t<!std::is_constructible_v<Type, Args...>, object_type &>
     construct(const entity_type entity, Args &&... args) {
         underlying_type::construct(entity);
         instances.emplace_back(Type{std::forward<Args>(args)...});
