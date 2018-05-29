@@ -8,5 +8,4 @@
 * create dedicated flat map based on types implementation (sort of "type map") for types to use within the registry and so on...
 * ease the assignment of tags as string (type-less assign member function + user defined literal for hashed strings)
 * work stealing job system (see #100)
-* C++17. That's all.
 * AOB

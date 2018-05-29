@@ -67,7 +67,7 @@ class Registry;
  */
 template<typename Entity, typename... Component>
 class PersistentView final {
-    static_assert(sizeof...(Component) > 1, "!");
+    static_assert(sizeof...(Component) > 1);
 
     /*! @brief A registry is allowed to create views. */
     friend class Registry<Entity>;
@@ -461,7 +461,7 @@ private:
  */
 template<typename Entity, typename... Component>
 class View final {
-    static_assert(sizeof...(Component) > 1, "!");
+    static_assert(sizeof...(Component) > 1);
 
     /*! @brief A registry is allowed to create views. */
     friend class Registry<Entity>;
