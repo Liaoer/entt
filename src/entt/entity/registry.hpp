@@ -64,7 +64,6 @@ class Registry {
 
     template<typename Tag>
     struct Attaching: Attachee {
-        // requirements for aggregates are relaxed only since C++17
         template<typename... Args>
         Attaching(const Entity entity, Args &&... args)
             : Attachee{entity}, tag{std::forward<Args>(args)...}
@@ -1286,7 +1285,8 @@ public:
      */
     template<typename... Component>
     View<Entity, Component...> view() {
-        return View<Entity, Component...>{(assure<Component>(), pool<Component>())...};
+        (assure<Component>(), ...);
+        return View{pool<Component>()...};
     }
 
     /**
@@ -1410,7 +1410,8 @@ public:
     template<typename... Component>
     PersistentView<Entity, Component...> view(persistent_t) {
         prepare<Component...>();
-        return PersistentView<Entity, Component...>{*handlers[handler_family::type<Component...>()], (assure<Component>(), pool<Component>())...};
+        (assure<Component>(), ...);
+        return PersistentView{*handlers[handler_family::type<Component...>()], pool<Component>()...};
     }
 
     /**
@@ -1438,7 +1439,7 @@ public:
     template<typename Component>
     RawView<Entity, Component> view(raw_t) {
         assure<Component>();
-        return RawView<Entity, Component>{pool<Component>()};
+        return RawView{pool<Component>()};
     }
 
     /**
