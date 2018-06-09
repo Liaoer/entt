@@ -105,9 +105,7 @@ TEST(Benchmark, IterateSingleComponent1M) {
 
     test([](auto, const auto &) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -129,9 +127,7 @@ TEST(Benchmark, IterateSingleComponentRaw1M) {
 
     test([](const auto &) {});
     test([](auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -154,9 +150,7 @@ TEST(Benchmark, IterateTwoComponents1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -182,9 +176,7 @@ TEST(Benchmark, IterateTwoComponents1MHalf) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -210,9 +202,7 @@ TEST(Benchmark, IterateTwoComponents1MOne) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -236,9 +226,7 @@ TEST(Benchmark, IterateTwoComponentsPersistent1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -264,9 +252,7 @@ TEST(Benchmark, IterateFiveComponents1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -295,9 +281,7 @@ TEST(Benchmark, IterateFiveComponents1MHalf) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -326,9 +310,7 @@ TEST(Benchmark, IterateFiveComponents1MOne) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -355,9 +337,7 @@ TEST(Benchmark, IterateFiveComponentsPersistent1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -388,9 +368,7 @@ TEST(Benchmark, IterateTenComponents1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -424,9 +402,7 @@ TEST(Benchmark, IterateTenComponents1MHalf) {
 
     test([](auto, auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -460,9 +436,7 @@ TEST(Benchmark, IterateTenComponents1MOne) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
@@ -494,9 +468,7 @@ TEST(Benchmark, IterateTenComponentsPersistent1M) {
 
     test([](auto, const auto &...) {});
     test([](auto, auto &... comp) {
-        using accumulator_type = int[];
-        accumulator_type accumulator = { (comp.x = {}, 0)... };
-        (void)accumulator;
+        ((comp.x = {}), ...);
     });
 }
 
