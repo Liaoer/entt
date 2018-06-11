@@ -911,7 +911,7 @@ public:
      * whenever a new instance of the given tag is created and assigned to an
      * entity.
      *
-     * The function type for a listener is:
+     * The function type for a listener is equivalent to:
      * @code{.cpp}
      * void(Registry<Entity> &, Entity);
      * @endcode
@@ -939,7 +939,7 @@ public:
      * whenever a new instance of the given component is created and assigned to
      * an entity.
      *
-     * The function type for a listener is:
+     * The function type for a listener is equivalent to:
      * @code{.cpp}
      * void(Registry<Entity> &, Entity);
      * @endcode
@@ -967,7 +967,7 @@ public:
      * whenever an instance of the given tag is removed from an entity and thus
      * destroyed.
      *
-     * The function type for a listener is:
+     * The function type for a listener is equivalent to:
      * @code{.cpp}
      * void(Registry<Entity> &, Entity);
      * @endcode
@@ -995,7 +995,7 @@ public:
      * whenever an instance of the given component is removed from an entity and
      * thus destroyed.
      *
-     * The function type for a listener is:
+     * The function type for a listener is equivalent to:
      * @code{.cpp}
      * void(Registry<Entity> &, Entity);
      * @endcode

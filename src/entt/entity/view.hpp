@@ -1524,7 +1524,7 @@ public:
      * The signature of the function should be equivalent to the following:
      *
      * @code{.cpp}
-     * void(const Component &);
+     * void(Component &);
      * @endcode
      *
      * @tparam Func Type of the function object to invoke.
