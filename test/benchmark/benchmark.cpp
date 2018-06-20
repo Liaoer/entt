@@ -31,7 +31,7 @@ private:
 };
 
 TEST(Benchmark, Construct) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Constructing 1000000 entities" << std::endl;
 
@@ -45,7 +45,7 @@ TEST(Benchmark, Construct) {
 }
 
 TEST(Benchmark, Destroy) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Destroying 1000000 entities" << std::endl;
 
@@ -63,7 +63,7 @@ TEST(Benchmark, Destroy) {
 }
 
 TEST(Benchmark, IterateCreateDeleteSingleComponent) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Looping 10000 times creating and deleting a random number of entities" << std::endl;
 
@@ -88,7 +88,7 @@ TEST(Benchmark, IterateCreateDeleteSingleComponent) {
 }
 
 TEST(Benchmark, IterateSingleComponent1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, one component" << std::endl;
 
@@ -110,7 +110,7 @@ TEST(Benchmark, IterateSingleComponent1M) {
 }
 
 TEST(Benchmark, IterateSingleComponentRaw1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, one component, raw view" << std::endl;
 
@@ -132,7 +132,7 @@ TEST(Benchmark, IterateSingleComponentRaw1M) {
 }
 
 TEST(Benchmark, IterateTwoComponents1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, two components" << std::endl;
 
@@ -155,7 +155,7 @@ TEST(Benchmark, IterateTwoComponents1M) {
 }
 
 TEST(Benchmark, IterateTwoComponents1MHalf) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, two components, half of the entities have all the components" << std::endl;
 
@@ -181,7 +181,7 @@ TEST(Benchmark, IterateTwoComponents1MHalf) {
 }
 
 TEST(Benchmark, IterateTwoComponents1MOne) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, two components, only one entity has all the components" << std::endl;
 
@@ -207,7 +207,7 @@ TEST(Benchmark, IterateTwoComponents1MOne) {
 }
 
 TEST(Benchmark, IterateTwoComponentsPersistent1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
     registry.prepare<Position, Velocity>();
 
     std::cout << "Iterating over 1000000 entities, two components, persistent view" << std::endl;
@@ -231,7 +231,7 @@ TEST(Benchmark, IterateTwoComponentsPersistent1M) {
 }
 
 TEST(Benchmark, IterateFiveComponents1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, five components" << std::endl;
 
@@ -257,7 +257,7 @@ TEST(Benchmark, IterateFiveComponents1M) {
 }
 
 TEST(Benchmark, IterateFiveComponents1MHalf) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, five components, half of the entities have all the components" << std::endl;
 
@@ -286,7 +286,7 @@ TEST(Benchmark, IterateFiveComponents1MHalf) {
 }
 
 TEST(Benchmark, IterateFiveComponents1MOne) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, five components, only one entity has all the components" << std::endl;
 
@@ -315,7 +315,7 @@ TEST(Benchmark, IterateFiveComponents1MOne) {
 }
 
 TEST(Benchmark, IterateFiveComponentsPersistent1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
     registry.prepare<Position, Velocity, Comp<1>, Comp<2>, Comp<3>>();
 
     std::cout << "Iterating over 1000000 entities, five components, persistent view" << std::endl;
@@ -342,7 +342,7 @@ TEST(Benchmark, IterateFiveComponentsPersistent1M) {
 }
 
 TEST(Benchmark, IterateTenComponents1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, ten components" << std::endl;
 
@@ -373,7 +373,7 @@ TEST(Benchmark, IterateTenComponents1M) {
 }
 
 TEST(Benchmark, IterateTenComponents1MHalf) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, ten components, half of the entities have all the components" << std::endl;
 
@@ -407,7 +407,7 @@ TEST(Benchmark, IterateTenComponents1MHalf) {
 }
 
 TEST(Benchmark, IterateTenComponents1MOne) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Iterating over 1000000 entities, ten components, only one entity has all the components" << std::endl;
 
@@ -441,7 +441,7 @@ TEST(Benchmark, IterateTenComponents1MOne) {
 }
 
 TEST(Benchmark, IterateTenComponentsPersistent1M) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
     registry.prepare<Position, Velocity, Comp<1>, Comp<2>, Comp<3>, Comp<4>, Comp<5>, Comp<6>, Comp<7>, Comp<8>>();
 
     std::cout << "Iterating over 1000000 entities, ten components, persistent view" << std::endl;
@@ -473,7 +473,7 @@ TEST(Benchmark, IterateTenComponentsPersistent1M) {
 }
 
 TEST(Benchmark, SortSingle) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Sort 150000 entities, one component" << std::endl;
 
@@ -492,7 +492,7 @@ TEST(Benchmark, SortSingle) {
 }
 
 TEST(Benchmark, SortMulti) {
-    entt::DefaultRegistry registry;
+    entt::Registry registry;
 
     std::cout << "Sort 150000 entities, two components" << std::endl;
 
@@ -514,8 +514,8 @@ TEST(Benchmark, SortMulti) {
 }
 
 TEST(Benchmark, AlmostSortedStdSort) {
-    entt::DefaultRegistry registry;
-    entt::DefaultRegistry::entity_type entities[3];
+    entt::Registry registry;
+    entt::Registry<>::entity_type entities[3];
 
     std::cout << "Sort 150000 entities, almost sorted, std::sort" << std::endl;
 
@@ -544,8 +544,8 @@ TEST(Benchmark, AlmostSortedStdSort) {
 }
 
 TEST(Benchmark, AlmostSortedInsertionSort) {
-    entt::DefaultRegistry registry;
-    entt::DefaultRegistry::entity_type entities[3];
+    entt::Registry registry;
+    entt::Registry<>::entity_type entities[3];
 
     std::cout << "Sort 150000 entities, almost sorted, insertion sort" << std::endl;
 
