@@ -1487,10 +1487,6 @@ private:
 };
 
 
-template<typename Entity = std::uint32_t>
-Registry() -> Registry<std::uint32_t>;
-
-
 }
 
 
