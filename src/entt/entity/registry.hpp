@@ -9,7 +9,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cassert>
-#include <algorithm>
+#include <numeric>
 #include <type_traits>
 #include "../config/config.h"
 #include "../core/algorithm.hpp"
