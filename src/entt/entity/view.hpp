@@ -272,7 +272,8 @@ public:
      * @return The components assigned to the entity.
      */
     template<typename... Comp>
-    decltype(auto) get([[maybe_unused]] const entity_type entity) const ENTT_NOEXCEPT {
+    std::conditional_t<sizeof...(Comp) == 1, std::tuple_element_t<0, std::tuple<const Comp &...>>, std::tuple<const Comp &...>>
+    get([[maybe_unused]] const entity_type entity) const ENTT_NOEXCEPT {
         assert(contains(entity));
 
         if constexpr(sizeof...(Comp) == 1) {
@@ -300,7 +301,8 @@ public:
      * @return The components assigned to the entity.
      */
     template<typename... Comp>
-    inline decltype(auto) get([[maybe_unused]] const entity_type entity) ENTT_NOEXCEPT {
+    inline std::conditional_t<sizeof...(Comp) == 1, std::tuple_element_t<0, std::tuple<Comp &...>>, std::tuple<Comp &...>>
+    get([[maybe_unused]] const entity_type entity) ENTT_NOEXCEPT {
         if constexpr(sizeof...(Comp) == 1) {
             return (const_cast<Comp &>(std::as_const(*this).template get<Comp>(entity)), ...);
         } else {
@@ -740,7 +742,8 @@ public:
      * @return The components assigned to the entity.
      */
     template<typename... Comp>
-    decltype(auto) get([[maybe_unused]] const entity_type entity) const ENTT_NOEXCEPT {
+    std::conditional_t<sizeof...(Comp) == 1, std::tuple_element_t<0, std::tuple<const Comp &...>>, std::tuple<const Comp &...>>
+    get([[maybe_unused]] const entity_type entity) const ENTT_NOEXCEPT {
         assert(contains(entity));
 
         if constexpr(sizeof...(Comp) == 1) {
@@ -768,7 +771,8 @@ public:
      * @return The components assigned to the entity.
      */
     template<typename... Comp>
-    inline decltype(auto) get([[maybe_unused]] const entity_type entity) ENTT_NOEXCEPT {
+    inline std::conditional_t<sizeof...(Comp) == 1, std::tuple_element_t<0, std::tuple<Comp &...>>, std::tuple<Comp &...>>
+    get([[maybe_unused]] const entity_type entity) ENTT_NOEXCEPT {
         if constexpr(sizeof...(Comp) == 1) {
             return (const_cast<Comp &>(std::as_const(*this).template get<Comp>(entity)), ...);
         } else {
