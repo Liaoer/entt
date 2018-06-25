@@ -9,6 +9,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <cassert>
+#include <iterator>
 #include <algorithm>
 #include <type_traits>
 #include "../config/config.h"
@@ -74,13 +75,13 @@ class Registry {
     };
 
     template<typename Component>
-    bool managed() const ENTT_NOEXCEPT {
+    inline bool managed() const ENTT_NOEXCEPT {
         const auto ctype = component_family::type<Component>();
         return ctype < pools.size() && std::get<0>(pools[ctype]);
     }
 
     template<typename Component>
-    const SparseSet<Entity, Component> & pool() const ENTT_NOEXCEPT {
+    inline const SparseSet<Entity, Component> & pool() const ENTT_NOEXCEPT {
         assert(managed<Component>());
         const auto ctype = component_family::type<Component>();
         return static_cast<SparseSet<Entity, Component> &>(*std::get<0>(pools[ctype]));
@@ -1287,6 +1288,7 @@ public:
      * @see View<Entity, Component>
      * @see PersistentView
      * @see RawView
+     * @see RuntimeView
      *
      * @tparam Component Type of components used to construct the view.
      * @return A newly created standard view.
@@ -1421,6 +1423,7 @@ public:
      * @see View<Entity, Component>
      * @see PersistentView
      * @see RawView
+     * @see RuntimeView
      *
      * @tparam Component Types of components used to construct the view.
      * @return A newly created persistent view.
@@ -1450,6 +1453,7 @@ public:
      * @see View<Entity, Component>
      * @see PersistentView
      * @see RawView
+     * @see RuntimeView
      *
      * @tparam Component Type of component used to construct the view.
      * @return A newly created raw view.
@@ -1458,6 +1462,43 @@ public:
     RawView<Entity, Component> view(raw_t) {
         assure<Component>();
         return RawView<Entity, Component>{pool<Component>()};
+    }
+
+    /**
+     * @brief Returns a runtime view for the given components.
+     *
+     * This kind of views are created on the fly and share with the registry its
+     * internal data structures.<br/>
+     * Feel free to discard a view after the use. Creating and destroying a view
+     * is an incredibly cheap operation because they do not require any type of
+     * initialization.<br/>
+     * As a rule of thumb, storing a view should never be an option.
+     *
+     * Runtime views are well suited when users want to construct a view from
+     * some external inputs and don't know at compile-time what are the required
+     * components.
+     *
+     * @see View
+     * @see View<Entity, Component>
+     * @see PersistentView
+     * @see RawView
+     * @see RuntimeView
+     *
+     * @tparam It Type of forward iterator.
+     * @param first An iterator to the first element of the range of components.
+     * @param last An iterator past the last element of the range of components.
+     * @return A newly created runtime view.
+     */
+    template<typename It>
+    RuntimeView<Entity> view(It first, It last) {
+        static_assert(std::is_convertible<typename std::iterator_traits<It>::value_type, component_type>::value, "!");
+        std::vector<const SparseSet<Entity> *> set(last - first);
+
+        std::transform(first, last, set.begin(), [this](const component_type ctype) {
+            return ctype < pools.size() ? std::get<0>(pools[ctype]).get() : nullptr;
+        });
+
+        return RuntimeView<Entity>{std::move(set)};
     }
 
     /**
